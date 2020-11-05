@@ -250,7 +250,16 @@ void setColorConversion709( GLfloat conversionMatrix[9] )
 {
     return outputFramebuffer;
 }
-
+- (void)focusOnPoint: (CGPoint)point {
+    [_inputCamera lockForConfiguration:nil];
+    
+    if (_inputCamera.isExposurePointOfInterestSupported) {
+        _inputCamera.exposurePointOfInterest = point;
+    }
+    
+    _inputCamera.subjectAreaChangeMonitoringEnabled = true;
+    [_inputCamera unlockForConfiguration];
+}
 - (void)dealloc 
 {
     [self stopCameraCapture];
