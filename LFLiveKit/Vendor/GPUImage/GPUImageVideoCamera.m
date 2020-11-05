@@ -113,6 +113,21 @@ void setColorConversion709( GLfloat conversionMatrix[9] )
 	// Add the video input	
 	NSError *error = nil;
 	videoInput = [[AVCaptureDeviceInput alloc] initWithDevice:_inputCamera error:&error];
+	
+	[videoInput.device lockForConfiguration:nil];
+	if ([videoInput.device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
+		videoInput.device.exposureMode = AVCaptureExposureModeContinuousAutoExposure;
+   	} else if ([videoInput.device isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
+		videoInput.device.exposureMode = AVCaptureExposureModeAutoExpose;
+	}
+    	
+	if ([videoInput.device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance]) {
+		videoInput.device.whiteBalanceMode = AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance;
+	} else if ([videoInput.device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeAutoWhiteBalance]) {
+		videoInput.device.whiteBalanceMode = AVCaptureWhiteBalanceModeAutoWhiteBalance;
+	}
+	[videoInput.device unlockForConfiguration];
+	
 	if ([_captureSession canAddInput:videoInput]) 
 	{
 		[_captureSession addInput:videoInput];
