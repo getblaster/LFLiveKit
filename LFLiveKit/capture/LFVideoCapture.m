@@ -108,7 +108,9 @@
 - (UIView *)preView {
     return self.gpuImageView.superview;
 }
-
+- (void)focusOnPoint: (CGPoint)point {
+    [self.videoCamera focusOnPoint:point];
+}
 - (void)setCaptureDevicePosition:(AVCaptureDevicePosition)captureDevicePosition {
     if(captureDevicePosition == self.videoCamera.cameraPosition) return;
     [self.videoCamera rotateCamera];
