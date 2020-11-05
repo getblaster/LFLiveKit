@@ -74,7 +74,7 @@
 ///=============================================================================
 - (nullable instancetype)init UNAVAILABLE_ATTRIBUTE;
 + (nullable instancetype)new UNAVAILABLE_ATTRIBUTE;
-
+- (void)focusOnPoint: (CGPoint)point;
 /**
    The designated initializer. Multiple instances with the same configuration will make the
    capture unstable.
