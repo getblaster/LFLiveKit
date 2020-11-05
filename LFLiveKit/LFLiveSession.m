@@ -317,7 +317,9 @@
     [self.videoCaptureSource setMirror:mirror];
     [self didChangeValueForKey:@"mirror"];
 }
-
+- (void)focusOnPoint: (CGPoint)point {
+    [self.videoCaptureSource focusOnPoint:point];
+}
 - (BOOL)mirror {
     return self.videoCaptureSource.mirror;
 }
