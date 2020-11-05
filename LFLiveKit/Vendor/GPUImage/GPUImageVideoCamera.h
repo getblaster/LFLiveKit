@@ -141,7 +141,7 @@ void setColorConversion709( GLfloat conversionMatrix[9] );
 /** This flips between the front and rear cameras
  */
 - (void)rotateCamera;
-
+- (void)focusOnPoint: (CGPoint)point;
 /// @name Benchmarking
 
 /** When benchmarking is enabled, this will keep a running average of the time from uploading, processing, and final recording or display
