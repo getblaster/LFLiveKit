@@ -256,7 +256,12 @@ void setColorConversion709( GLfloat conversionMatrix[9] )
     if (_inputCamera.isExposurePointOfInterestSupported) {
         _inputCamera.exposurePointOfInterest = point;
     }
-    
+    if ([_inputCamera isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
+	[_inputCamera setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
+    } else if ([_inputCamera isExposureModeSupported:AVCaptureExposureModeAutoExpose]) {
+	[_inputCamera setExposureMode:AVCaptureExposureModeAutoExpose];
+    }
+	
     _inputCamera.subjectAreaChangeMonitoringEnabled = true;
     [_inputCamera unlockForConfiguration];
 }
