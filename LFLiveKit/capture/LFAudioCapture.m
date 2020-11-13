@@ -115,6 +115,7 @@ NSString *const LFAudioComponentFailedToCreateNotification = @"LFAudioComponentF
         dispatch_async(self.taskQueue, ^{
             self.isRunning = YES;
             NSLog(@"MicrophoneSource: startRunning");
+            [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionDefaultToSpeaker | AVAudioSessionCategoryOptionInterruptSpokenAudioAndMixWithOthers error:nil];
             AudioOutputUnitStart(self.componetInstance);
         });
     } else {
