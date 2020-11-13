@@ -11,7 +11,7 @@
 
 static const NSUInteger defaultSortBufferMaxCount = 5;///< 排序10个内
 static const NSUInteger defaultUpdateInterval = 1;///< 更新频率为1s
-static const NSUInteger defaultCallBackInterval = 5;///< 5s计时一次
+static const NSUInteger defaultCallBackInterval = 2;///< 5s计时一次
 static const NSUInteger defaultSendBufferMaxCount = 600;///< 最大缓冲区为600
 
 @interface LFStreamingBuffer (){
